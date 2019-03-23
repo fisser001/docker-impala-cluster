@@ -1,19 +1,6 @@
-FROM openjdk:8-slim
+FROM centos:7
+RUN yum update -y &&  yum install -y java-1.8.0-openjdk wget epel-release  &&  yum repolist &&  yum install -y python-pip &&  pip install awscli &&  wget https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/cloudera-cdh5.repo -O /etc/yum.repos.d/cloudera-cdh5.repo && yum clean all &&  yum repolist &&  yum install -y impala-server impala-catalog impala-state-store  impala-shell
 
-RUN apt-get update
-RUN apt-get install -y curl tar sudo rsync python wget python-pip python-dev build-essential
-
-
-
-RUN cd /etc/apt/sources.list.d/
-RUN wget https://archive.cloudera.com/cm6/6.1.1/ubuntu1604/apt/cloudera-manager.list
-RUN apt-get update
-
-RUN wget https://archive.cloudera.com/cm6/6.1.0/ubuntu1604/apt/archive.key
-RUN apt-key add archive.key
-RUN apt-get update
-
-RUN apt-get install -y impala impala-server impala-catalog impala-state-store  impala-shell
 
 WORKDIR /
 
