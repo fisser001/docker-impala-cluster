@@ -4,10 +4,14 @@ RUN apt-get update
 RUN apt-get install -y curl tar sudo rsync python wget python-pip python-dev build-essential
 
 RUN wget https://archive.cloudera.com/cdh5/ubuntu/xenial/amd64/cdh/archive.key
-RUN sudo apt-key add archive.key
-RUN sudo apt-get update
+RUN apt-key add archive.key
+RUN apt-get update
 
-RUN apt-get install -y impala-server impala-catalog impala-state-store  impala-shell
+RUN cd /etc/apt/sources.list.d/
+RUN wget http://archive.cloudera.com/impala/ubuntu/precise/amd64/impala/cloudera.list
+RUN apt-get update
+
+RUN apt-get install -y impala impala-server impala-catalog impala-state-store  impala-shell
 
 WORKDIR /
 
@@ -17,8 +21,8 @@ WORKDIR /
 #ADD scripts/start_statestored.sh /usr/bin/start_statestored.sh
 #ADD wait_metastore.sh /usr/bin/wait_metastore.sh
 
-ADD con/hdfs-site.xml /etc/hadoop/conf
-ADD conf/hive-site.xml /etc/hadoop/conf
-ADD conf/mapred-site.xml /etc/hadoop/conf
-ADD conf/core-site.xml /etc/hadoop/conf
+ADD con/hdfs-site.xml /etc/impala/conf
+ADD conf/hive-site.xml /etc/impala/conf
+ADD conf/mapred-site.xml /etc/impala/conf
+ADD conf/core-site.xml /etc/impala/conf
 #ADD impala.conf.template /etc/impala/impala.conf.template
