@@ -42,6 +42,16 @@ services:
       - datanode2
     env_file:
       - ./hadoop-hive.env
+
+  nodemanager2:
+    image: mfisser/hadoop-nodemanager:1.0.0-hadoop2.7.6-java8
+    container_name: nodemanager2
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+    env_file:
+      - ./hadoop-hive.env      
   
   datanode1:
     image: mfisser/hadoop-datanode:1.0.0-hadoop2.7.6-java8
