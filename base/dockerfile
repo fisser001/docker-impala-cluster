@@ -3,12 +3,14 @@ FROM openjdk:8-slim
 RUN apt-get update
 RUN apt-get install -y curl tar sudo rsync python wget python-pip python-dev build-essential
 
-RUN wget https://archive.cloudera.com/cdh5/ubuntu/xenial/amd64/cdh/archive.key
-RUN apt-key add archive.key
-RUN apt-get update
+
 
 RUN cd /etc/apt/sources.list.d/
-RUN wget http://archive.cloudera.com/impala/ubuntu/precise/amd64/impala/cloudera.list
+RUN wget https://archive.cloudera.com/cm6/6.1.1/ubuntu1604/apt/cloudera-manager.list
+RUN apt-get update
+
+RUN wget https://archive.cloudera.com/cm6/6.1.0/ubuntu1604/apt/archive.key
+RUN apt-key add archive.key
 RUN apt-get update
 
 RUN apt-get install -y impala impala-server impala-catalog impala-state-store  impala-shell
