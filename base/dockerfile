@@ -7,7 +7,7 @@ RUN wget https://archive.cloudera.com/cdh5/ubuntu/xenial/amd64/cdh/archive.key
 RUN sudo apt-key add archive.key
 RUN sudo apt-get update
 
-RUN apt-get install install -y impala-server impala-catalog impala-state-store  impala-shell
+RUN apt-get install -y impala-server impala-catalog impala-state-store  impala-shell
 
 WORKDIR /
 
