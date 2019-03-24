@@ -1,4 +1,5 @@
 #!/bin/bash
 
 sleep 65
-/etc/init.d/impala-server start
+#/etc/init.d/impala-server start
+/usr/bin/impalad
