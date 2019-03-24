@@ -135,6 +135,7 @@ services:
     image: mfisser/impala-catalog:1.0.0
     depends_on:
       - hive-metastore
+      - statestore
     environment:
       - IMPALA_CATALOG_HOST=catalog
       - IMPALA_STATESTORE_HOST=statestore
@@ -145,7 +146,7 @@ services:
   statestore:
     image: mfisser/impala-state-store:1.0.0
     depends_on:
-      - catalog
+      - hive-metastore
     environment:
       - IMPALA_CATALOG_HOST=catalog
       - IMPALA_STATESTORE_HOST=statestore

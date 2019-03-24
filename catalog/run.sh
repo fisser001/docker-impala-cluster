@@ -1,3 +1,4 @@
 #!/bin/bash
 
-service /etc/init.d/impala-catalog start
+sleep 60
+/etc/init.d/impala-catalog start
