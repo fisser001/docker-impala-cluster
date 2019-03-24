@@ -14,7 +14,8 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
---><configuration>
+-->
+<configuration>
 <property><name>hive.metastore.uris</name><value>thrift://hive-metastore:9083</value></property>
 <property><name>hive.execution.engine</name><value>tez</value></property>
 <property><name>datanucleus.autoCreateSchema</name><value>false</value></property>

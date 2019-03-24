@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/etc/init.d/impala-server start
+service /etc/init.d/impala-server start

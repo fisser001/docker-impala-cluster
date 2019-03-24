@@ -119,6 +119,18 @@ services:
       - 21050:21050
       - 25000:25000
 
+  impalad2:
+    image: mfisser/impala-impalad:1.0.0
+    depends_on:
+      - statestore
+    environment:
+      - IMPALA_CATALOG_HOST=catalog
+      - IMPALA_STATESTORE_HOST=statestore
+      - METASTORE_HOST=hive-metastore
+    ports:
+      - 21000:21000
+      - 21050:21050
+      - 25000:25000
   catalog:
     image: mfisser/impala-catalog:1.0.0
     depends_on:

@@ -14,5 +14,5 @@ ADD conf/hdfs-site.xml /etc/impala/conf
 ADD conf/hive-site.xml /etc/impala/conf
 ADD conf/mapred-site.xml /etc/impala/conf
 ADD conf/core-site.xml /etc/impala/conf
-ADD conf/impala /etc/default
+COPY conf/impala /etc/default
 #ADD impala.conf.template /etc/impala/impala.conf.template
