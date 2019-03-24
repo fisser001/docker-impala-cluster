@@ -2,4 +2,5 @@
 
 sleep 65
 #/etc/init.d/impala-server start
-/usr/bin/impalad
+source /etc/default/impala
+/usr/bin/impalad ${IMPALA_SERVER_ARGS}

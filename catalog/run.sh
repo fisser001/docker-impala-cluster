@@ -2,4 +2,5 @@
 
 sleep 60
 #/etc/init.d/impala-catalog start
-/usr/bin/catalogd
+source /etc/default/impala
+/usr/bin/catalogd ${IMPALA_CATALOG_ARGS}
