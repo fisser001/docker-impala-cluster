@@ -128,9 +128,9 @@ services:
       - IMPALA_STATESTORE_HOST=statestore
       - METASTORE_HOST=hive-metastore
     ports:
-      - 21000:21000
-      - 21050:21050
-      - 25000:25000
+      - 21001:21000
+      - 21051:21050
+      - 25001:25000
   catalog:
     image: mfisser/impala-catalog:1.0.0
     depends_on:
