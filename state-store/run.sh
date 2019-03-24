@@ -1,3 +1,3 @@
 #!/bin/bash
 
-service /etc/init.d/impala-state-store start
+/etc/init.d/impala-state-store start
