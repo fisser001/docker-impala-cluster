@@ -1,5 +1,5 @@
 FROM centos:7
-RUN yum update -y &&  yum install -y nano openssh-clients git java-1.8.0-openjdk wget epel-release  &&  yum repolist &&  yum install -y python-pip &&  pip install awscli &&  wget https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/cloudera-cdh5.repo -O /etc/yum.repos.d/cloudera-cdh5.repo && yum clean all &&  yum repolist &&  yum install -y impala-server impala-catalog impala-state-store  impala-shell
+RUN yum update -y &&  yum install -y nano openssh-clients unzip git java-1.8.0-openjdk wget epel-release  &&  yum repolist &&  yum install -y python-pip &&  pip install awscli &&  wget https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/cloudera-cdh5.repo -O /etc/yum.repos.d/cloudera-cdh5.repo && yum clean all &&  yum repolist &&  yum install -y impala-server impala-catalog impala-state-store  impala-shell
 
 WORKDIR /
 
