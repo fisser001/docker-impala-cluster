@@ -1,18 +1,10 @@
 FROM centos:7
-RUN yum update -y &&  yum install -y java-1.8.0-openjdk wget epel-release  &&  yum repolist &&  yum install -y python-pip &&  pip install awscli &&  wget https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/cloudera-cdh5.repo -O /etc/yum.repos.d/cloudera-cdh5.repo && yum clean all &&  yum repolist &&  yum install -y impala-server impala-catalog impala-state-store  impala-shell
-
+RUN yum update -y &&  yum install -y nano openssh-clients git java-1.8.0-openjdk wget epel-release  &&  yum repolist &&  yum install -y python-pip &&  pip install awscli &&  wget https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/cloudera-cdh5.repo -O /etc/yum.repos.d/cloudera-cdh5.repo && yum clean all &&  yum repolist &&  yum install -y impala-server impala-catalog impala-state-store  impala-shell
 
 WORKDIR /
-
-#ADD entrypoint.sh /entrypoint.sh
-#ADD scripts/start_impalad.sh /usr/bin/start_impalad.sh
-#ADD scripts/start_catalogd.sh /usr/bin/start_catalogd.sh
-#ADD scripts/start_statestored.sh /usr/bin/start_statestored.sh
-#ADD wait_metastore.sh /usr/bin/wait_metastore.sh
 
 ADD conf/hdfs-site.xml /etc/impala/conf
 ADD conf/hive-site.xml /etc/impala/conf
 ADD conf/mapred-site.xml /etc/impala/conf
 ADD conf/core-site.xml /etc/impala/conf
 COPY conf/impala /etc/default
-#ADD impala.conf.template /etc/impala/impala.conf.template

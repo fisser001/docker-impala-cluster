@@ -108,6 +108,8 @@ services:
   
   impalad1:
     image: mfisser/impala-impalad:1.0.0
+    volumes:
+      - impalad:/data/results
     depends_on:
       - statestore
     environment:
@@ -159,4 +161,5 @@ volumes:
   hadoop_datanode1:
   hadoop_datanode2:
   hadoop_datanode3:
-  hadoop_historyserver:    
+  hadoop_historyserver:
+  impalad:    
