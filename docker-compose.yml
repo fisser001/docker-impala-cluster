@@ -84,7 +84,9 @@ services:
       - ./hadoop-hive.env
 
   hive-server:
-    image: mfisser/hive:1.0.0-hive2.3.2-for-postgresql-metastore 
+    image: mfisser/hive:1.0.0-hive2.3.2-for-postgresql-metastore
+    volumes:
+      - hive:/data/results     
     env_file:
       - ./hadoop-hive.env
     environment:
@@ -123,6 +125,8 @@ services:
 
   impalad2:
     image: mfisser/impala-impalad:1.0.0
+    volumes:
+      - impalad:/data/results    
     depends_on:
       - statestore
     environment:
@@ -162,4 +166,5 @@ volumes:
   hadoop_datanode2:
   hadoop_datanode3:
   hadoop_historyserver:
-  impalad:    
+  impalad:
+  hive:    
