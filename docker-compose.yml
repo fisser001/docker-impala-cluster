@@ -143,7 +143,7 @@ services:
   impalad1:
     image: mfisser/impala-impalad:1.0.0
     volumes:
-      - impalad:/data/results
+      - impalad:/data/mydata
     depends_on:
       - statestore
     environment:
@@ -158,7 +158,7 @@ services:
   impalad2:
     image: mfisser/impala-impalad:1.0.0
     volumes:
-      - impalad:/data/results    
+      - impalad:/data/mydata    
     depends_on:
       - statestore
     environment:
