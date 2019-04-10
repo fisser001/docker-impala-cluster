@@ -4,6 +4,7 @@ services:
   namenode:
     image: mfisser/hadoop-namenode:1.0.0-hadoop2.7.6-java8
     container_name: namenode
+    restart: always
     volumes:
       - type: volume
         source: hadoop_namenode
@@ -16,6 +17,7 @@ services:
   resourcemanager:
     image: mfisser/hadoop-resourcemanager:1.0.0-hadoop2.7.6-java8
     container_name: resourcemanager
+    restart: always
     volumes:
       - type: volume
         source: hadoop_resourcemanager
@@ -44,6 +46,7 @@ services:
   nodemanager1:
     image: mfisser/hadoop-nodemanager:1.0.0-hadoop2.7.6-java8
     container_name: nodemanager1
+    restart: always
     volumes:
       - type: volume
         source: hadoop_nodemanager1
@@ -58,6 +61,7 @@ services:
   nodemanager2:
     image: mfisser/hadoop-nodemanager:1.0.0-hadoop2.7.6-java8
     container_name: nodemanager2
+    restart: always
     volumes:
       - type: volume
         source: hadoop_nodemanager2
@@ -107,6 +111,7 @@ services:
 
   hive-server:
     image: mfisser/hive:1.0.0-hive2.3.2-for-postgresql-metastore
+    restart: always
     volumes:
      - type: volume
        source: mydata
@@ -144,6 +149,7 @@ services:
     image: mfisser/impala-impalad:1.0.0
     volumes:
       - impalad:/data/mydata
+    restart: always      
     depends_on:
       - statestore
     environment:
@@ -158,7 +164,8 @@ services:
   impalad2:
     image: mfisser/impala-impalad:1.0.0
     volumes:
-      - impalad:/data/mydata    
+      - impalad:/data/mydata
+    restart: always          
     depends_on:
       - statestore
     environment:
@@ -169,8 +176,58 @@ services:
       - 21001:21000
       - 21051:21050
       - 25001:25000
+
+  impalad3:
+    image: mfisser/impala-impalad:1.0.0
+    volumes:
+      - impalad:/data/mydata
+    restart: always          
+    depends_on:
+      - statestore
+    environment:
+      - IMPALA_CATALOG_HOST=catalog
+      - IMPALA_STATESTORE_HOST=statestore
+      - METASTORE_HOST=hive-metastore
+    ports:
+      - 21002:21000
+      - 21052:21050
+      - 25002:25000
+
+  impalad4:
+    image: mfisser/impala-impalad:1.0.0
+    volumes:
+      - impalad:/data/mydata
+    restart: always          
+    depends_on:
+      - statestore
+    environment:
+      - IMPALA_CATALOG_HOST=catalog
+      - IMPALA_STATESTORE_HOST=statestore
+      - METASTORE_HOST=hive-metastore
+    ports:
+      - 21003:21000
+      - 21053:21050
+      - 25003:25000
+
+  impalad5:
+    image: mfisser/impala-impalad:1.0.0
+    volumes:
+      - impalad:/data/mydata
+    restart: always          
+    depends_on:
+      - statestore
+    environment:
+      - IMPALA_CATALOG_HOST=catalog
+      - IMPALA_STATESTORE_HOST=statestore
+      - METASTORE_HOST=hive-metastore
+    ports:
+      - 21004:21000
+      - 21054:21050
+      - 25004:25000
+
   catalog:
     image: mfisser/impala-catalog:1.0.0
+    restart: always
     depends_on:
       - hive-metastore
       - statestore
@@ -183,6 +240,7 @@ services:
   
   statestore:
     image: mfisser/impala-state-store:1.0.0
+    restart: always
     depends_on:
       - hive-metastore
     environment:
