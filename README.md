@@ -24,6 +24,10 @@ Definition of the docker image for the Apache Impala impalad (worker) component.
 ### Docker-compose
 This file contains the main definiton of the Apache Impala cluster with additional components like HDFS, Hive, etc. which have been used by the benchmark. The file contains all components that are relevant for the execution of the benchmark. 
 
+The Hadoop components which are used within in the docker-compose file are described in the following repository: https://github.com/fisser001/docker-hadoop
+
+The Hive components which are used within in the docker-compose file are described in the following repository: https://github.com/fisser001/docker-hive
+
 In order to start the cluster, docker and docker-compose have to be installed on the machine where the cluster should be started. If that is fullfilled navigate to the folder where the docker-compose file is located. The following command has to be executed for starting all relevant components:
 
 ```console
