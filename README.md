@@ -5,6 +5,12 @@ All container have been build by Docker and executed by Docker-compose.
 
 All given information/code belong only to Apache Imapala which was one tool of the benchmark. Each component of Impala has its own Docker image.
 
+## Versions
+- Hadoop: 2.7.6
+- Hive: 2.3.0
+- Postgres: 9.5.3
+- Impala: 2.2.0
+
 ## Subfolder and relevant files
 
 The repository is divided into the following subfolder:
