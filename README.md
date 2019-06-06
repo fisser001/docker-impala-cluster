@@ -1,40 +1,40 @@
-# docker-impala-cluster
+# Impala benchmarking cluster with Hive and HDFS based on Docker-compose
 This repository contains all the container related code for creating the container images and starting the benchmarking cluster.  
 
-All container have been build by docker and executed by docker-compose.
+All container have been build by Docker and executed by Docker-compose.
 
 All given information/code belong only to Apache Imapala which was one tool of the benchmark. Each component of Impala has its own Docker image.
 
-## Subfolders
+## Subfolder and relevant files
 
 The repository is divided into the following subfolder:
 
 ### base
-Contains the definition of the creation for an Apache Impala Docker base image.
+Contains the definition for the creation of an Apache Impala Docker base image.
 
 ### catalog
-Definition of the docker image for the Apache Impala catalog component. This definition is based on the previous defined base image.
+Definition of the Docker image for the Apache Impala catalog component. This definition is based on the previous defined base image.
 
 ### state-store
-Definition of the docker image for the Apache Impala statestore component. This definition is based on the previous defined base image.
+Definition of the Docker image for the Apache Impala statestore component. This definition is based on the previous defined base image.
 
 ### impalad
-Definition of the docker image for the Apache Impala impalad (worker) component. This definition is based on the previous defined base image.
+Definition of the Docker image for the Apache Impala impalad (worker) component. This definition is based on the previous defined base image.
 
 ### Docker-compose
-This file contains the main definiton of the Apache Impala cluster with additional components like HDFS, Hive, etc. which have been used by the benchmark. The file contains all components that are relevant for the execution of the benchmark. 
+This file contains the main definiton of the Apache Impala cluster with additional components like HDFS, Hive, etc. which have been used by the benchmark. The file contains all components that are relevant for starting the benchmark environment.
 
-The Hadoop components which are used within in the docker-compose file are described in the following repository: https://github.com/fisser001/docker-hadoop
+The Hadoop components which are used within in the Docker-compose file are described in the following repository: https://github.com/fisser001/docker-hadoop
 
-The Hive components which are used within in the docker-compose file are described in the following repository: https://github.com/fisser001/docker-hive
+The Hive components which are used within in the Docker-compose file are described in the following repository: https://github.com/fisser001/docker-hive
 
-In order to start the cluster, docker and docker-compose have to be installed on the machine where the cluster should be started. If that is fullfilled navigate to the folder where the docker-compose file is located. The following command has to be executed for starting all relevant components:
+In order to start the cluster, Docker and Docker-compose have to be installed on the machine where the cluster should be started. If that is fullfilled navigate to the folder where the Docker-compose file is located. The following command has to be executed for starting all relevant components:
 
 ```console
 docker-compose up
 ```
 
-After execution of the docker-compose file the following components will start:
+After execution of the Docker-compose file the following components will start:
 
 1.  Hadoop Namenode (1x)
 2.  Hadoop Datanode (3x)
@@ -48,7 +48,7 @@ After execution of the docker-compose file the following components will start:
 10. State-store (1x)
 11. Catalog (1x)
 
-For shut down of the Impala environment the following command needs to be executed:
+In order to shut down all components of the environment the following command needs to be executed:
 ```console
 docker-compose stop
 ```
@@ -71,14 +71,14 @@ Once all containers have been started the GUIs of the components can be accessed
 
 In order to find the IP address that has been given to the component one can execute the following commands:
 ```console
-docker network ls # in order to get the network name
-docker network inspect <NETWORK NAME> # exchange the network name with the identified name with the previous command.
+docker network ls #In order to get the network name
+docker network inspect <NETWORK NAME> #Exchange the network name with the identified name with the previous command.
 ```
 
 ## Access the container
 
 ### Hive
-Navigate into the docker-compose directory and execute the following command:
+Navigate into the Docker-compose directory and execute the following command:
 ```console
 docker-compose -p benchmark exec hive-server bash
 ```
@@ -88,7 +88,7 @@ Within in this container one can access the hive-server with the following comma
 ```
 
 ### Impala 
-Navigate into the docker-compose directory and execute the following command. Here the imaplad number 1 is entered:
+Navigate into the Docker-compose directory and execute the following command. Here the imaplad number 1 is entered:
 ```console
 docker-compose -p benchmark exec impalad1 bash
 ```
